@@ -1,11 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
-#include <windows.h>
 
 int main () {
-    SetConsoleOutputCP(65001);
-    SetConsoleCP(65001);
-
     // У холі факультету встановили автоматичну кавомашину. Її внутрішній
     // лічильник приготовлених порцій кави працює на базі типу unsigned short. Якщо
     // кавомашина зготує більше, лічильник скинеться в 0, і технічна служба втратить
@@ -35,7 +31,7 @@ int main () {
     if (planned_count > (USHRT_MAX - current_count)) {
         unsigned int remained = (USHRT_MAX - current_count) + 1;
         
-        unsigned short looped_value = (current_count + planned_count);
+        unsigned short looped_value = (unsigned short)(current_count + planned_count);
         
         printf("Лічильник скинеться через %u порцій! Потрібне технічне обслуговування!", remained);
         printf("Значення, яке покаже лічильник після зациклення: %hu", looped_value); 
